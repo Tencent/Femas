@@ -10,7 +10,6 @@
 
 -------------------
 
-[TOC]
 
 ## 行为准则
 > 请务必阅读并遵守我们的 **[行为准则](./Code_Of_Conduct.md)**。
@@ -57,6 +56,6 @@ Femas以 **`develop`** 分支作为开发基准分支，下面是具体操作流
 #### [常见问题]()
 #### 加入我们的社区交流群
 
-<img width="400" src="/uploads/530D7503245848429E4A803E4BFB8FE5/image.png" alt="image.png" />
+![image](https://user-images.githubusercontent.com/22976760/153165352-361517e8-0712-4194-938f-2ea712ddf0a6.png)
 
 
