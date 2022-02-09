@@ -10,7 +10,6 @@ If you have good comments or suggestions, please create [`Issues`]() or [`Pull R
 
 -------------------
 
-[TOC]
 
 ## code of conduct
 > Please be sure to read and follow our **[Code of Conduct](./Code_Of_Conduct.md)**.
@@ -56,5 +55,5 @@ All code merged into the official code will be reviewed by the community. Genera
 ## Questions about the source code
 #### [FAQ]()
 #### Join our community group
-<img width="400" src="/uploads/1561638009A1466ABA319B53DD949DD3/image.png" alt="image.png" />
+![image](https://user-images.githubusercontent.com/22976760/153164965-ff5d0f2b-5990-4c8e-a7dc-2791fd1ca8bd.png)
 
