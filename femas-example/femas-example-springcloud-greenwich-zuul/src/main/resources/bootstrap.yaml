@@ -1,0 +1,48 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: femas-zuul-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+      config:
+        server-addr: 127.0.0.1:8848
+    circuit:
+      breaker:
+        enabled: false
+zuul:
+  routes:
+    femas-springcloud-consumer1: #如果想让单个服务的匹配缩短，可以单个配置，这样匹配成功后，转发时就不会去除前缀，访问路径：http://localhost:8989/user/1
+      path: /ribbon-consumer/**
+      serviceId: femas-springcloud-consumer
+      strip-prefix: true
+    femas-springcloud-provider1: #如果想让单个服务的匹配缩短，可以单个配置，这样匹配成功后，转发时就不会去除前缀，访问路径：http://localhost:8989/user/1
+      path: /ribbon-provider/**
+      serviceId: femas-springcloud-provider
+      strip-prefix: true
+    femas-springcloud-provider2: #如果想让单个服务的匹配缩短，可以单个配置，这样匹配成功后，转发时就不会去除前缀，访问路径：http://localhost:8989/user/1
+      path: /host-provider/**
+      url: http://localhost:19001
+      strip-prefix: true
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 5000
+  MaxAutoRetries: 0
+  # 同一个微服务其他实例的最大重试次数，不包括第一次调用的实例。默认值为1
+  MaxAutoRetriesNextServer: 0
+  # 是否所有操作（GET、POST等）都允许重试。默认值为false
+  OkToRetryOnAllOperations: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  file: ./log/femas/${spring.application.name}/${spring.application.name}
