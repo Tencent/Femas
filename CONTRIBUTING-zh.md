@@ -12,7 +12,7 @@
 
 
 ## 行为准则
-> 请务必阅读并遵守我们的 **[行为准则](./Code-Of-Conduct.md)**。
+> 请务必阅读并遵守我们的 **[行为准则](./Code-of-Conduct.md)**。
 
 ## 报告 Bugs/提交issue
 * 搜索 [issues](https://github.com/Tencent/Femas/issues) 确保该错误未被提出，以免重复提交。

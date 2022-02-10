@@ -12,7 +12,7 @@ If you have good comments or suggestions, please create [`Issues`](https://githu
 
 
 ## code of conduct
-> Please be sure to read and follow our **[Code of Conduct](./Code-Of-Conduct.md)**.
+> Please be sure to read and follow our **[Code of Conduct](./Code-of-Conduct.md)**.
 
 ## Report Bugs/Submit an issue
 * Search for [issues](https://github.com/Tencent/Femas/issues) to ensure that the error has not been raised, so as to avoid repeated submissions.
