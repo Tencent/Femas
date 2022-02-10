@@ -28,28 +28,20 @@
 - [License](#license)
 
 ## Introduction
-**Femas is an open source cloud-native one-stop microservice management framework of Tencent Microservices Product Center. It is incubated and supported by Tencent's commercial product [`TSF`](https://cloud.tencent.com/product/tsf) Developed Tencent’s billion-scale user ecosystem. The cloud-native microservice technology stack is complicated. Femas uses the idea of ​​`Multi-runtime` standard paradigm API to `standardize` and `modulate` the core capabilities of the underlying microservices, and divide the technology ecology of the microservice field through a reasonable architecture. Assembled together to meet diversified microservice scenarios, lightweight, portable, low-cost, and cloud-free vendor binding, allowing enterprises to more easily build a large-scale distributed architecture based on cloud native.**
-
->- For end users: Femas provides complete console capabilities, and provides common framework plug-ins, compatible with mainstream open source technologies. Users only need to add `Pom` dependencies to quickly and easily have a full set of visual microservice runtimes ability.
-
->- For self-developed framework teams: Femas has developed a set of microservice API interface definitions that conform to the cloud-native `Multi-runtime` standard paradigm. The framework team can connect any self-developed framework to Femas through the highly encapsulated `API` interface , To obtain a full set of visual microservice runtime capabilities.
-
->- For the platform team: Femas abstracts almost all component capabilities that are used in microservices runtime, and provides a large number of implementations. The platform team can also assemble into a private microservice platform that meets the company's internal platform conditions through the realization of custom components and provide it for company research and development.
-
+**Femas is an open source product form of Tencent Cloud's microservice platform [TSF](https://cloud.tencent.com/product/tsf) . It focuses on the running state of microservices and provides one-stop microservice management and control capabilities such as multi-frame unified service discovery, north-south and east-west traffic management, service observability, and configuration management. In the service architecture transformation, the core issues are difficult to reuse heterogeneous frameworks, difficult to manage and control surge traffic, and time-consuming for troubleshooting and recovery.**
+> - data plane: Femas uses the multi-runtime architecture design to standardize and modularize the underlying core capabilities of microservices, and assemble the basic components split in the microservice field through a reasonable architecture to meet diversified microservice scenarios. , lightweight, portable, low-cost, cloud-free vendor binding.
+> - control plane: Femas provides a unified control plane standard protocol, a set of governance protocols, and multi-language and multi-data plane distribution.
 ### ability
 ![image](https://user-images.githubusercontent.com/22976760/153156369-6fa5626e-f0a5-452b-8519-fe84013b5186.png)
 
-- Registry hosting:
-Femas has realized the hosting of mainstream open source registry (currently supports `Consul, nacos, eureka`), including cluster management and service management. Users can configure the registry cluster on the Paas platform to view the cluster status and service list.
+- Registry manage:
+Femas implements the management of open source registries (currently supports `Consul, nacos, eureka`), including cluster management and service management. Users can configure the registry cluster on the Paas platform to view the cluster status and service list.
 - Service governance: **`Authentication`, `API management`, `Fuse downgrade`, `Access current limit`, `Service registration discovery`, `Service routing`, `Service event`**.
 - Service configuration: application configuration management, configuration hot update, Femas implements a set of standard configuration API interface, configuration is divided into `governance rules`,`application configuration`, **open source side supports directly issuing `governance rules through Paas platform `, do not rely on other third-party components**.
-- Service registration discovery
-Femas implements a set of standard registration discovery API interfaces, and users can directly use the SDK provided by Femas to register and discover to mainstream open source registry centers.
+- Service registration discovery: Femas implements a set of standard registration discovery API interfaces, and users can directly use the SDK provided by Femas to register and discover to mainstream open source registry centers.
 - Service monitoring:
- - > Metrics: Femas implements a set of standard API interfaces for business metrics. Femas uses `micrometer` to implement business metrics statistics by default.
- - > Tracing: Femas implements a set of standard tracing API interfaces. The SDK side is responsible for formulating `OpenTracing` log specifications and link collection. By default, Opentelemtry is used to collect Tracing
-- TBD
-
+    - > Metrics: Femas implements a set of standard API interfaces for business metrics. Femas uses `micrometer` to implement business metrics statistics by default.
+    - > Tracing: Femas implements a set of standard tracing API interfaces. The SDK side is responsible for formulating `OpenTracing` log specifications and link collection. By default, Opentelemtry is used to collect Tracing
 
 ### Feature
 
