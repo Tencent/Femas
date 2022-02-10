@@ -4,7 +4,7 @@
 
 Welcome to join us! This document is a guide on how to contribute to Femas.
 
-If you have good comments or suggestions, please create [`Issues`]() or [`Pull Requests`](), to contribute to the Femas open source community. Femas continues to recruit contributors, even if it is answering questions in the issue, or doing some simple bug fixes, it will be of great help to us.
+If you have good comments or suggestions, please create [`Issues`](https://github.com/Tencent/Femas/issues/new) or [`Pull Requests`](https://github.com/Tencent/Femas/pulls), to contribute to the Femas open source community. Femas continues to recruit contributors, even if it is answering questions in the issue, or doing some simple bug fixes, it will be of great help to us.
 
 [Tencent Open Source Incentive Program](https://opensource.tencent.com/contribution) encourages developers to participate in contributions, and look forward to your joining.
 
@@ -12,12 +12,12 @@ If you have good comments or suggestions, please create [`Issues`]() or [`Pull R
 
 
 ## code of conduct
-> Please be sure to read and follow our **[Code of Conduct](./Code_Of_Conduct.md)**.
+> Please be sure to read and follow our **[Code of Conduct](./Code-Of-Conduct.md)**.
 
 ## Report Bugs/Submit an issue
-* Search for [issues]() to ensure that the error has not been raised, so as to avoid repeated submissions.
+* Search for [issues](https://github.com/Tencent/Femas/issues) to ensure that the error has not been raised, so as to avoid repeated submissions.
 * Get in touch with the community through the community WeChat group or email to confirm bugs or new features (optional).
-* [Create a new issue](), including **title and detailed description, code examples, screenshots or short videos** to help us locate the issue .
+* [Create a new issue](https://github.com/Tencent/Femas/issues/new) , including **title and detailed description, code examples, screenshots or short videos** to help us locate the issue .
 ## Start contributing
 Femas community contributors mainly have four types of roles:
 - Users (community users who research in the corporate environment or who are currently landing Femas)
@@ -28,7 +28,7 @@ Femas community contributors mainly have four types of roles:
 We encourage newcomers to actively participate in the Femas project. We also welcome corporate users to use Femas and provide the community with landing cases. The community will fully support the corporate users in landing and share wonderful cases with everyone. The spirit of the Internet is sharing, and the Femas community We will continue to share Tencent's internal microservice best practice methodology with the industry.
 
 ### Pull Request Guide
-> First select an issue that you want to fix from [issues list](), any PR must be associated with a valid issue, or first with community members Contact and confirm that the issue is unclaimed. If multiple people claim the same issue at the same time, the community will review the issue and assign the issue to the most reasonable maintainer.
+> First select an issue that you want to fix from [issues list](https://github.com/Tencent/Femas/issues), any PR must be associated with a valid issue, or first with community members Contact and confirm that the issue is unclaimed. If multiple people claim the same issue at the same time, the community will review the issue and assign the issue to the most reasonable maintainer.
 
 Femas uses the **`develop`** branch as the development benchmark branch. The following is the specific operation process:
 1. Fork the code from **`develop` branch** to your own GitHub repository.

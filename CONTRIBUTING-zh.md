@@ -4,7 +4,7 @@
 
 欢迎加入我们！ 本文档是关于如何为 Femas 做出贡献的指南。
 
-如果您有好的意见或建议，欢迎创建[`Issues`]()或[`Pull Requests`]()，为Femas开源社区做贡献。 Femas 持续招募贡献者，即使是在 issue 中回答问题，或者做一些简单的 bug 修复，都会对我们有很大的帮助。
+如果您有好的意见或建议，欢迎创建[`Issues`](https://github.com/Tencent/Femas/issues/new) 或[`Pull Requests`](https://github.com/Tencent/Femas/pulls) ，为Femas开源社区做贡献。 Femas 持续招募贡献者，即使是在 issue 中回答问题，或者做一些简单的 bug 修复，都会对我们有很大的帮助。
 
 **[腾讯开源激励计划](https://opensource.tencent.com/contribution)鼓励开发者参与贡献，期待您的加入。**
 
@@ -12,12 +12,12 @@
 
 
 ## 行为准则
-> 请务必阅读并遵守我们的 **[行为准则](./Code_Of_Conduct.md)**。
+> 请务必阅读并遵守我们的 **[行为准则](./Code-Of-Conduct.md)**。
 
 ## 报告 Bugs/提交issue
-* 搜索 [issues]() 确保该错误未被提出，以免重复提交。
+* 搜索 [issues](https://github.com/Tencent/Femas/issues) 确保该错误未被提出，以免重复提交。
 * 通过社区微信群或邮件与社区取得联系，确认bug或者新的feature（可选）。
-*  [新建一个issue]()，包含**标题和详细描述、代码示例、截图或短视频**以帮助我们定位问题。
+*  [新建一个issue](https://github.com/Tencent/Femas/issues/new)，包含**标题和详细描述、代码示例、截图或短视频**以帮助我们定位问题。
 ## 开始贡献
 Femas社区贡献者主要有四种角色类型：
 - 用户（在企业环境调研或正在落地Femas的社区用户）
@@ -28,7 +28,7 @@ Femas社区贡献者主要有四种角色类型：
 我们鼓励新人积极参与Femas 项目，我们也非常欢迎企业用户使用Femas，给社区提供落地案例，社区也会全力支持企业用户落地，并将精彩的案例分享给大家，互联网的精神就是分享，Femas社区也将持续将腾讯内部微服务最佳实践方法论和业界共享。
 
 ### Pull Request指南
-> 首先从[issues列表]()中选择一个想要修复的问题，任何PR都必须关联一个有效的issue，或者先和社区成员联系，确认该issue无人认领，如果有多人同时认领同一个issue，社区将会经过评审，将issue分配给方案最合理的维护者。
+> 首先从[issues列表](https://github.com/Tencent/Femas/issues) 中选择一个想要修复的问题，任何PR都必须关联一个有效的issue，或者先和社区成员联系，确认该issue无人认领，如果有多人同时认领同一个issue，社区将会经过评审，将issue分配给方案最合理的维护者。
 
 Femas以 **`develop`** 分支作为开发基准分支，下面是具体操作流程：
 1. 从 **`develop`分支** fork代码到你自己GitHub的仓库。
