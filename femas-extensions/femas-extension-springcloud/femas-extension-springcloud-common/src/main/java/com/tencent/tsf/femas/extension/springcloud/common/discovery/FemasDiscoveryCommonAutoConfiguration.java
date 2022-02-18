@@ -6,7 +6,7 @@ import com.alibaba.cloud.nacos.registry.NacosRegistrationCustomizer;
 import com.tencent.tsf.femas.extension.springcloud.common.discovery.consul.FemasConsulRegistrationCustomizer;
 import com.tencent.tsf.femas.extension.springcloud.common.discovery.nacos.FemasNacosRegistrationCustomizer;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.cloud.consul.discovery.ConsulDiscoveryProperties;
+import org.springframework.cloud.consul.ConsulProperties;
 import org.springframework.cloud.consul.serviceregistry.ConsulRegistrationCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,8 +27,8 @@ public class FemasDiscoveryCommonAutoConfiguration {
         }
 
         @Bean("registryUrl")
-        public String registryUrl(ConsulDiscoveryProperties consulDiscoveryProperties) {
-            return consulDiscoveryProperties.getHostname() + ":" + consulDiscoveryProperties.getPort();
+        public String registryUrl(ConsulProperties consulProperties) {
+            return consulProperties.getHost() + ":" + consulProperties.getPort();
         }
     }
 

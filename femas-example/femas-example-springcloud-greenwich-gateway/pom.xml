@@ -10,11 +10,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>femas-example-springcloud-greenwich-zuul</artifactId>
+    <artifactId>femas-example-springcloud-greenwich-gateway</artifactId>
 
     <properties>
-        <spring-boot-dependencies.version>2.1.13.RELEASE</spring-boot-dependencies.version>
-        <spring-cloud-dependencies.version>Greenwich.SR6</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>Hoxton.SR3</spring-cloud-dependencies.version>
+        <spring-boot-dependencies.version>2.2.5.RELEASE</spring-boot-dependencies.version>
+        <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
     </properties>
 
     <dependencyManagement>
@@ -26,13 +27,17 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -41,39 +46,51 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>2.1.4.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-consul-discovery</artifactId>-->
-<!--            <version>2.1.5.RELEASE</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-consul-config</artifactId>-->
-<!--            <version>2.1.5.RELEASE</version>-->
-<!--        </dependency>-->
 
         <dependency>
             <groupId>com.tencent.tsf</groupId>
-            <artifactId>femas-springcloud-greenwich-zuul-starter</artifactId>
+            <artifactId>femas-extension-springcloud-greenwich-gateway</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.4</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.1.16.RELEASE</version>
                 <configuration>
-                    <mainClass>com.tencent.tsf.femas.example.gateway.zuul.ZuulApplication</mainClass>
+                    <mainClass>com.tencent.tsf.femas.example.gateway.springcloud.GatewayApplication
+                    </mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -85,5 +102,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ZuultHeaderUtils extends AbstractRequestMetaUtils {
@@ -62,6 +63,19 @@ public class ZuultHeaderUtils extends AbstractRequestMetaUtils {
             }
         }
         return value;
+    }
+
+    @Override
+    public Map<String, String> getPrefixRequestMetas(String prefix){
+        Map<String, String> result = new HashMap<>();
+        Map<String, String> headersMap = requestContext.getZuulRequestHeaders();
+        for (Map.Entry<String, String> entry : headersMap.entrySet()) {
+            String key = entry.getKey();
+            if (key.startsWith(prefix)) {
+                result.put(key, entry.getValue());
+            }
+        }
+        return result;
     }
 
     @Override

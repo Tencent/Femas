@@ -13,12 +13,12 @@ import java.util.*;
 public class EnvConfig extends AbstractConfig<Object> {
     private static Map<String, Object> conf;
 
-    public static final String FEMAS_CONFIG_LOCATION_PROPERTY = "femas.conf";
+    public static final String FEMAS_CONF_LOCATION_PROPERTY = "femas.conf";
 
     public EnvConfig() {
         // 加载外部配置文件
         Properties properties = System.getProperties();
-        String location = properties.getProperty(FEMAS_CONFIG_LOCATION_PROPERTY);
+        String location = properties.getProperty(FEMAS_CONF_LOCATION_PROPERTY);
         if (StringUtils.isNotBlank(location)) {
             this.conf = ConfigUtils.loadAbsoluteConfig(new File(location));
         }

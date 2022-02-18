@@ -2,22 +2,16 @@ package com.tencent.tsf.femas.governance.plugin;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.fasterxml.jackson.dataformat.yaml.YAMLParser;
 import com.tencent.tsf.femas.common.util.ConfigUtils;
-import com.tencent.tsf.femas.common.util.FileUtils;
-import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Properties;
+import java.util.TreeMap;
 
 /**
  * 加载配置文件
@@ -30,12 +24,12 @@ public class PluginDefinitionReader {
 
     private final static Logger logger = LoggerFactory.getLogger(PluginDefinitionReader.class);
 
-    //默认加载顺序,很springboot保持一致，参见ConfigFileApplicationListener
+    //默认加载顺序，跟springboot保持一致，参见ConfigFileApplicationListener
     private static final String DEFAULT_SEARCH_LOCATIONS = "classpath:/,classpath:/config/";
     public static final String CLASSPATH_URL_PREFIX = "classpath:/";
     private static final String YAML_DEFAULT_NAMES = "femas.conf";
 
-    public static final String FEMAS_CONFIG_LOCATION_PROPERTY = "femas.config";
+    public static final String FEMAS_CONF_LOCATION_PROPERTY = "femas.conf";
 
     private static final Map<String, Object> conf;
     private static final JsonNode finalYamlLocations;
@@ -44,7 +38,7 @@ public class PluginDefinitionReader {
     static {
         // 加载外部配置文件
         Properties properties = System.getProperties();
-        String location = properties.getProperty(FEMAS_CONFIG_LOCATION_PROPERTY);
+        String location = properties.getProperty(FEMAS_CONF_LOCATION_PROPERTY);
         if (StringUtils.isNotBlank(location)) {
             File configFile = new File(location);
             conf = ConfigUtils.loadAbsoluteConfig(configFile);

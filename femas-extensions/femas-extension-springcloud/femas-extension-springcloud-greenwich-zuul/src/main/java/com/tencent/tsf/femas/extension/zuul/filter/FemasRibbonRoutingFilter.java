@@ -59,7 +59,7 @@ public class FemasRibbonRoutingFilter extends RibbonRoutingFilter {
         String httpMethod = httpServletRequest.getMethod();
         femasRequest.setInterfaceName(url.getPath());
         femasRequest.setTargetMethodSig(httpMethod + "/" + context.get(FilterConstants.REQUEST_URI_KEY));
-        femasRequest.setDoneChooseInstance(true);
+        femasRequest.setDoneChooseInstance(false);
         RpcContext rpcContext = extensionLayer.beforeClientInvoke(femasRequest, new ZuultHeaderUtils(context));
 
         RibbonCommandContext commandContext = buildCommandContext(context);

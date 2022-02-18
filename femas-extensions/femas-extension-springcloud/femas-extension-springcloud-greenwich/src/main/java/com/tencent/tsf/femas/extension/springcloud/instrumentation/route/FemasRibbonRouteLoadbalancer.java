@@ -16,11 +16,12 @@ import com.tencent.tsf.femas.extension.springcloud.discovery.ribbon.FemasService
 import com.tencent.tsf.femas.governance.circuitbreaker.FemasCircuitBreakerIsolationLevelEnum;
 import com.tencent.tsf.femas.governance.circuitbreaker.ICircuitBreakerService;
 import com.tencent.tsf.femas.governance.config.FemasPluginContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author leo
