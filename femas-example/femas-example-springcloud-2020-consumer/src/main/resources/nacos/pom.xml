@@ -13,7 +13,7 @@
     <artifactId>femas-example-springcloud-2020-consumer</artifactId>
 
     <properties>
-        <spring-boot-dependencies.version>2.4.6</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>2.4.3</spring-boot-dependencies.version>
         <spring-cloud-dependencies.version>2020.0.2</spring-cloud-dependencies.version>
     </properties>
 

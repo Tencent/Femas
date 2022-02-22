@@ -1,25 +1,18 @@
 package com.tencent.tsf.femas.common.httpclient.client;
 
-import static com.tencent.tsf.femas.common.util.HttpHeaderKeys.CONTENT_TYPE;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tencent.tsf.femas.common.exception.FemasRuntimeException;
 import com.tencent.tsf.femas.common.httpclient.FemasApacheClientHttpResponse;
 import com.tencent.tsf.femas.common.httpclient.HttpClientResponse;
 import com.tencent.tsf.femas.common.util.HttpElement;
 import com.tencent.tsf.femas.common.util.HttpResult;
-import java.io.IOException;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.ContentType;
@@ -28,6 +21,15 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import static com.tencent.tsf.femas.common.util.HttpHeaderKeys.CONTENT_TYPE;
 
 
 /**
@@ -67,7 +69,7 @@ public class FemasApacheHttpRestClient extends AbstractHttpClient {
         if (requestBase instanceof HttpEntityEnclosingRequest) {
             HttpEntityEnclosingRequest request = (HttpEntityEnclosingRequest) requestBase;
 
-            ContentType contentType = ContentType.create(header.get(CONTENT_TYPE), requestHttpEntity.getCharset());
+            ContentType contentType = ContentType.parse(header.get(CONTENT_TYPE));
             HttpEntity entity;
             if (body instanceof byte[]) {
                 entity = new ByteArrayEntity((byte[]) body, contentType);
@@ -179,7 +181,7 @@ public class FemasApacheHttpRestClient extends AbstractHttpClient {
 
     private HttpRequestBase build(HttpRequestEntity requestHttpEntity) throws Exception {
         final Map<String, String> headers = requestHttpEntity.getHeaders();
-        final HttpRequestBase httpRequestBase = new HttpRequestBase() {
+        final HttpRequestBase httpRequestBase = new HttpEntityEnclosingRequestBase() {
             @Override
             public String getMethod() {
                 return requestHttpEntity.getHttpMethod();

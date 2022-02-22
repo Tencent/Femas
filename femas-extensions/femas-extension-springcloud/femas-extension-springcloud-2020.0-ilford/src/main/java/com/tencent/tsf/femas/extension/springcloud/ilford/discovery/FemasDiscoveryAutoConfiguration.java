@@ -1,17 +1,6 @@
 package com.tencent.tsf.femas.extension.springcloud.ilford.discovery;
 
 
-import com.alibaba.cloud.nacos.NacosServiceInstance;
-import com.alibaba.cloud.nacos.registry.NacosRegistrationCustomizer;
-import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.consul.ConsulServerConverter;
-import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.kubernetes.FemasKubernetesDiscoveryClient;
-import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.kubernetes.KubernetesServerConverter;
-import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.loadbalancer.DiscoveryServerConverter;
-import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.nacos.NacosServerConverter;
-import com.tencent.tsf.femas.common.kubernetes.KubernetesClientServicesFunction;
-import com.tencent.tsf.femas.common.kubernetes.KubernetesDiscoveryProperties;
-import com.tencent.tsf.femas.common.kubernetes.ServicePortSecureResolver;
-import io.fabric8.kubernetes.client.KubernetesClient;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -23,6 +12,21 @@ import org.springframework.cloud.kubernetes.fabric8.discovery.ConditionalOnKuber
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+
+import com.alibaba.cloud.nacos.NacosServiceInstance;
+import com.alibaba.cloud.nacos.registry.NacosRegistrationCustomizer;
+import com.tencent.cloud.polaris.pojo.PolarisServiceInstance;
+import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.consul.ConsulServerConverter;
+import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.kubernetes.FemasKubernetesDiscoveryClient;
+import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.kubernetes.KubernetesServerConverter;
+import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.loadbalancer.DiscoveryServerConverter;
+import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.nacos.NacosServerConverter;
+import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.polaris.PolarisServerConverter;
+import com.tencent.tsf.femas.common.kubernetes.KubernetesClientServicesFunction;
+import com.tencent.tsf.femas.common.kubernetes.KubernetesDiscoveryProperties;
+import com.tencent.tsf.femas.common.kubernetes.ServicePortSecureResolver;
+
+import io.fabric8.kubernetes.client.KubernetesClient;
 
 @Configuration
 public class FemasDiscoveryAutoConfiguration {
@@ -44,6 +48,15 @@ public class FemasDiscoveryAutoConfiguration {
             return new NacosServerConverter();
         }
     }
+    
+    @Configuration
+    @ConditionalOnClass({PolarisServiceInstance.class})
+    static class FemasPolarisConfiguration {
+        @Bean("converterAdapter")
+        public DiscoveryServerConverter polarisConverterAdapter() {
+            return new PolarisServerConverter();
+        }
+    }
 
     @Configuration
     @ConditionalOnClass({KubernetesServiceInstance.class})
@@ -54,7 +67,9 @@ public class FemasDiscoveryAutoConfiguration {
         }
     }
 
-    @ConditionalOnClass({Fabric8AutoConfiguration.class})
+    @ConditionalOnClass({Fabric8AutoConfiguration.class, KubernetesServiceInstance.class, KubernetesClient.class,
+            KubernetesDiscoveryProperties.class, KubernetesClientServicesFunction.class,
+            FemasKubernetesDiscoveryClient.class})
     @ConditionalOnKubernetesDiscoveryEnabled
     public static class KubernetesDiscoveryClientConfiguration {
         @Bean("kubernetesDiscoveryClient")

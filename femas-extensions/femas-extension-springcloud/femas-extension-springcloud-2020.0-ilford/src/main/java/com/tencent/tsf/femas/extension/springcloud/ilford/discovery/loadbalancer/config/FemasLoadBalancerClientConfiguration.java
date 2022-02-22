@@ -19,6 +19,9 @@ package com.tencent.tsf.femas.extension.springcloud.ilford.discovery.loadbalance
 
 import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.loadbalancer.DiscoveryServerConverter;
 import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.loadbalancer.FemasRouteLoadBalancer;
+import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.loadbalancer.FemasServiceFilterLoadBalancer;
+import com.tencent.tsf.femas.extension.springcloud.ilford.discovery.loadbalancer.FemasServiceFilterRouteLoadBalancer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cloud.client.ConditionalOnDiscoveryEnabled;
 import org.springframework.cloud.loadbalancer.core.ServiceInstanceListSupplier;
@@ -26,7 +29,10 @@ import org.springframework.cloud.loadbalancer.support.LoadBalancerClientFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.env.Environment;
+
+import java.util.List;
 
 /**
  * <pre>
@@ -40,12 +46,18 @@ import org.springframework.core.env.Environment;
 public class FemasLoadBalancerClientConfiguration {
 
     @Bean
+    public FemasServiceFilterLoadBalancer femasServiceFilterRouteLoadBalancer() {
+        return new FemasServiceFilterRouteLoadBalancer();
+    }
+
+    @Bean
     @ConditionalOnMissingBean
     @DependsOn("converterAdapter")
     public FemasRouteLoadBalancer femasRouteLoadBalancer(DiscoveryServerConverter converter, Environment environment,
-                                                         LoadBalancerClientFactory loadBalancerClientFactory) {
+            LoadBalancerClientFactory loadBalancerClientFactory,
+            @Lazy @Autowired(required = false) List<FemasServiceFilterLoadBalancer> loadBalancerList) {
         String name = environment.getProperty(LoadBalancerClientFactory.PROPERTY_NAME);
-        return new FemasRouteLoadBalancer(converter,
+        return new FemasRouteLoadBalancer(converter, loadBalancerList,
                 loadBalancerClientFactory.getLazyProvider(name, ServiceInstanceListSupplier.class), name);
     }
 

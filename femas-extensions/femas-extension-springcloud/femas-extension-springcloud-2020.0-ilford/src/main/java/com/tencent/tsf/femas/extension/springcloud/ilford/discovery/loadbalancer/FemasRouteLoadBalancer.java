@@ -34,10 +34,10 @@ public class FemasRouteLoadBalancer implements ReactorServiceInstanceLoadBalance
     private static final Logger log = LoggerFactory.getLogger(FemasRouteLoadBalancer.class);
     final String serviceId;
     private final DiscoveryServerConverter converter;
+    private List<FemasServiceFilterLoadBalancer> loadBalancerList;
     ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider;
     private IExtensionLayer extensionLayer = ExtensionManager.getExtensionLayer();
     private volatile Context commonContext = ContextFactory.getContextInstance();
-
 
     /**
      * @param serviceInstanceListSupplierProvider a provider of
@@ -45,34 +45,41 @@ public class FemasRouteLoadBalancer implements ReactorServiceInstanceLoadBalance
      * @param serviceId id of the service for which to choose an instance
      */
     public FemasRouteLoadBalancer(DiscoveryServerConverter converter,
+            List<FemasServiceFilterLoadBalancer> loadBalancerList,
             ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider,
             String serviceId) {
         this.converter = converter;
         this.serviceId = serviceId;
         this.serviceInstanceListSupplierProvider = serviceInstanceListSupplierProvider;
+        this.loadBalancerList = loadBalancerList;
     }
 
     @SuppressWarnings("rawtypes")
     @Override
     public Mono<Response<ServiceInstance>> choose(Request request) {
         Object rpcContextInfo = commonContext.getCopyRpcContext();
+        com.tencent.tsf.femas.common.entity.Request rpcInfoRequest = Context.getRpcInfo().getRequest();
 
         ServiceInstanceListSupplier supplier = serviceInstanceListSupplierProvider
                 .getIfAvailable(NoopServiceInstanceListSupplier::new);
         return supplier.get(request).next()
-                .map(serviceInstances -> processInstanceResponse(supplier, serviceInstances, rpcContextInfo));
+                .map(serviceInstances -> processInstanceResponse(supplier, serviceInstances, rpcContextInfo, rpcInfoRequest));
     }
 
     private Response<ServiceInstance> processInstanceResponse(
             ServiceInstanceListSupplier supplier,
-            List<ServiceInstance> serviceInstances, Object rpcContextInfo) {
-        // 跨线程了，重新设置上下文,
+            List<ServiceInstance> serviceInstances, Object rpcContextInfo, com.tencent.tsf.femas.common.entity.Request rpcInfoRequest) {
+        // 跨线程了，重新设置上下文
         commonContext.restoreRpcContext(rpcContextInfo);
+        Context.getRpcInfo().setRequest(rpcInfoRequest);
+        
+        loadBalancerList.forEach(femasServiceFilterLoadBalancer -> femasServiceFilterLoadBalancer.beforeChooseServer(serviceInstances));
 
         Response<ServiceInstance> serviceInstanceResponse = getInstanceResponse(serviceInstances);
         if (supplier instanceof SelectedInstanceCallback && serviceInstanceResponse.hasServer()) {
             ((SelectedInstanceCallback) supplier).selectedServiceInstance(serviceInstanceResponse.getServer());
         }
+        loadBalancerList.forEach(femasServiceFilterLoadBalancer -> femasServiceFilterLoadBalancer.afterChooseServer(serviceInstanceResponse.getServer(), serviceInstances));
         return serviceInstanceResponse;
     }
 

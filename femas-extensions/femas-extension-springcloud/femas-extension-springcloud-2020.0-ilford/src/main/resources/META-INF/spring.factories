@@ -5,6 +5,7 @@ com.tencent.tsf.femas.extension.springcloud.common.instrumentation.config.FemasG
 com.tencent.tsf.femas.extension.springcloud.ilford.discovery.loadbalancer.config.FemasLoadBalancerAutoConfiguration,\
 com.tencent.tsf.femas.extension.springcloud.common.instrumentation.restapi.FemasSwaggerAutoConfiguration,\
 com.tencent.tsf.femas.extension.springcloud.ilford.discovery.FemasFeignInterceptorAutoConfiguration,\
-com.tencent.tsf.femas.extension.springcloud.common.instrumentation.metrics.PrometheusConfig
+com.tencent.tsf.femas.extension.springcloud.common.instrumentation.metrics.PrometheusConfig,\
+com.tencent.tsf.femas.extension.springcloud.ilford.common.config.FemasContextConfiguration
 org.springframework.context.ApplicationListener=\
 com.tencent.tsf.femas.extension.springcloud.common.instrumentation.restapi.FemasSwaggerApplicationListener

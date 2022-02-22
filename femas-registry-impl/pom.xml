@@ -19,7 +19,8 @@
         <module>femas-registry-nacos</module>
         <module>femas-registry-eureka</module>
         <module>femas-registry-k8s</module>
-    </modules>
+    	<module>femas-registry-polaris</module>
+  </modules>
 
     <dependencies>
     </dependencies>

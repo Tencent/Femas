@@ -13,7 +13,7 @@
     <description>femas dependencies BOM</description>
 
     <properties>
-        <revision>0.2.0-ALPHA</revision>
+        <revision>0.3.0</revision>
 
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <gson.version>2.8.6</gson.version>
@@ -41,7 +41,7 @@
         <consul.process.version>2.0.0</consul.process.version>
         <consul.client.version>1.3.7</consul.client.version>
         <snakeyaml.version>1.29</snakeyaml.version>
-        <grpc.version>1.29.0</grpc.version>
+        <grpc.version>1.33.0</grpc.version>
         <brave.version>5.11.2</brave.version>
         <resilience4j.version>1.3.1</resilience4j.version>
         <commons.collections.version>3.2.2</commons.collections.version>
@@ -65,6 +65,7 @@
         <k8sClient.version>10.0.0</k8sClient.version>
         <springcloud-kubernetes-fabric8.version>2.0.4</springcloud-kubernetes-fabric8.version>
         <fabric8.client.version>5.5.0</fabric8.client.version>
+        <polaris.version>1.2.0</polaris.version>
         <log4j.version>2.17.1</log4j.version>
     </properties>
 
@@ -78,6 +79,21 @@
                 <scope>import</scope>
             </dependency>
             
+            <!-- 北极星相关依赖 -->
+	        <dependency>
+	            <groupId>com.tencent.polaris</groupId>
+	            <artifactId>polaris-dependencies</artifactId>
+	            <version>${polaris.version}</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+
+	        <dependency>
+	        	<groupId>com.tencent.cloud</groupId>
+				<artifactId>spring-cloud-tencent</artifactId>
+				<version>1.0.0.2020-SNAPSHOT</version>
+	        </dependency>
+
             <dependency>
 	            <groupId>org.springframework.boot</groupId>
 	            <artifactId>spring-boot-starter-actuator</artifactId>
@@ -174,12 +190,6 @@
 
             <dependency>
                 <groupId>com.tencent.tsf</groupId>
-                <artifactId>femas-rpc</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.tencent.tsf</groupId>
                 <artifactId>femas-governance-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -187,18 +197,6 @@
             <dependency>
                 <groupId>com.tencent.tsf</groupId>
                 <artifactId>femas-governance</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.tencent.tsf</groupId>
-                <artifactId>femas-rpc-impl</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.tencent.tsf</groupId>
-                <artifactId>femas-impl-default</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

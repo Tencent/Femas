@@ -20,9 +20,9 @@ public class Parsers {
     public enum DateParser {
         INSTANCE;
 
-        private static final String LONG_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
-        private static final String MEDIUM_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
-        private static final String SHORT_DATE_FORMAT = "yyyy-MM-dd";
+        public static final String LONG_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
+        public static final String MEDIUM_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+        public static final String SHORT_DATE_FORMAT = "yyyy-MM-dd";
 
         /**
          * Will try to parse the date with Locale.US and formats as follows:

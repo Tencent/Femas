@@ -34,15 +34,7 @@
         </dependency>
         <dependency>
             <groupId>com.tencent.tsf</groupId>
-            <artifactId>femas-rpc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.tencent.tsf</groupId>
             <artifactId>femas-governance-impl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.tencent.tsf</groupId>
-            <artifactId>femas-impl-default</artifactId>
         </dependency>
         <dependency>
             <groupId>com.tencent.tsf</groupId>

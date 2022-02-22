@@ -13,7 +13,7 @@
     <artifactId>femas-example-springcloud-2020-consumer</artifactId>
 
     <properties>
-        <spring-boot-dependencies.version>2.4.6</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>2.4.3</spring-boot-dependencies.version>
         <spring-cloud-dependencies.version>2020.0.2</spring-cloud-dependencies.version>
     </properties>
 
@@ -68,17 +68,32 @@
             <groupId>com.tencent.tsf</groupId>
             <artifactId>femas-springcloud-2020.0-ilford-starter</artifactId>
         </dependency>
+        <!-- consul服务注册发现 -->
+<!-- 		<dependency> -->
+<!--             <groupId>org.springframework.cloud</groupId> -->
+<!--             <artifactId>spring-cloud-starter-consul-discovery</artifactId> -->
+<!--             <version>3.0.2</version> -->
+<!--         </dependency> -->
 
-        <!-- 		<dependency> -->
-        <!--             <groupId>org.springframework.cloud</groupId> -->
-        <!--             <artifactId>spring-cloud-starter-consul-discovery</artifactId> -->
-        <!--             <version>3.0.3</version> -->
-        <!--         </dependency> -->
+        <!-- nacos服务注册发现 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
             <version>2021.1</version>
         </dependency>
+
+        <!-- polaris服务注册发现 -->
+<!-- 		<dependency> -->
+<!-- 	       	<groupId>com.tencent.cloud</groupId> -->
+<!-- 			<artifactId>spring-cloud-starter-tencent-polaris-discovery</artifactId> -->
+<!-- 			<version>1.0.0.2020-SNAPSHOT</version> -->
+<!-- 	    </dependency> -->
+
+	    <dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-commons</artifactId>
+	        <version>3.0.2</version>
+	    </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

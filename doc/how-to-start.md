@@ -68,7 +68,7 @@ output
 docker run -d --name femas-runner -w /usr/local/src/femas \
 -p 8708:8080 \
 -e VERSION=2ab9fcb \
--v /home/minghhou/workspace/femas/logs:/usr/local/src/femas/femas-admin-starter/target/femas-admin-starter-0.2.0-ALPHA-2ab9fcb/femas-admin/logs hub.grepcode.cn/femas/all:2ab9fcb
+-v /home/minghhou/workspace/femas/logs:/usr/local/src/femas/femas-admin-starter/target/femas-admin-starter-0.3.0-2ab9fcb/femas-admin/logs hub.grepcode.cn/femas/all:2ab9fcb
 1ed73deba3ebb05669d97b58f28e2cd6ff77402aa4976dbdfa10f920d432cd40
 ```
 
